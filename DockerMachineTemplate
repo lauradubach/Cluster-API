@@ -1,0 +1,8 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
+kind: DockerMachineTemplate
+metadata:
+  namespace: default
+  name: default-machine-template
+spec:
+  template:
+    spec: {}
