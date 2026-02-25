@@ -1,5 +1,7 @@
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta2
 kind: DockerCluster
 metadata:
-  namespace: default
-  name: example
+  name: k0s-example
+  annotations:
+    cluster.x-k8s.io/managed-by: k0smotron # (1)
+spec: {}

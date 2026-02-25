@@ -1,27 +1,26 @@
 apiVersion: cluster.x-k8s.io/v1beta2
 kind: MachineDeployment
 metadata:
-  name: example-workers
-  namespace: default
+  name: k0s-example-workers
 spec:
-  replicas: 2 # Instead of 1
-  clusterName: example # (1)
+  replicas: 1
+  clusterName: k0s-example
   selector:
     matchLabels:
-      cluster: example
+      cluster: k0s-example
   template:
     metadata:
       labels:
-        cluster: example
+        cluster: k0s-example
     spec:
-      clusterName: example # (1)
-      version: v1.35.0 # (2)
+      clusterName: k0s-example
+      version: v1.35.1 # This version is used by CAPD to create "node" containers using the image kindest/node.
       bootstrap:
-        configRef: # (3)
+        configRef:
           apiGroup: bootstrap.cluster.x-k8s.io
-          kind: KubeadmConfigTemplate
-          name: worker
-      infrastructureRef: # (4)
+          kind: K0sWorkerConfigTemplate
+          name: k0s-worker
+      infrastructureRef:
         apiGroup: infrastructure.cluster.x-k8s.io
         kind: DockerMachineTemplate
-        name: default-machine-template
+        name: default

@@ -1,0 +1,11 @@
+apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+kind: K0smotronControlPlane
+metadata:
+  name: k0s-example
+spec:
+  version: v1.35.1+k0s.0 # (1)
+  replicas: 1
+  persistence:
+    type: emptyDir # (2)
+  service:
+    type: NodePort # (3)

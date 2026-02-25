@@ -1,14 +1,13 @@
 apiVersion: cluster.x-k8s.io/v1beta2
 kind: Cluster
 metadata:
-  namespace: default
-  name: example
+  name: k0s-example
 spec:
-  controlPlaneRef: # (1)
+  controlPlaneRef:
     apiGroup: controlplane.cluster.x-k8s.io
-    kind: KubeadmControlPlane
-    name: example
-  infrastructureRef: # (2)
+    kind: K0smotronControlPlane
+    name: k0s-example
+  infrastructureRef:
     apiGroup: infrastructure.cluster.x-k8s.io
     kind: DockerCluster
-    name: example
+    name: k0s-example
